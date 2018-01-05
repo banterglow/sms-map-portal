@@ -59,7 +59,7 @@ class Forms extends React.Component {
         </div>
         <div className="col-md-3">
           <form ref="form" onSubmit={this.submitPhone}>
-            <input type="type" placeholder="Send to phone" value={this.state.phone} onChange={this.changePhone} required/>
+            <input type="type" placeholder="send to phone" value={this.state.phone} onChange={this.changePhone} required/>
             <button type="submit"> Submit </button>
           </form>
         </div>
