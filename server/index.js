@@ -2,6 +2,7 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let morgan = require('morgan');
 let request = require('request-promise');
+let axios = require('axios');
 let db = require('../database-mongo/index.js');
 let config = require('../react-client/config.js');
 let client = require('twilio')(config.twilio_SID, config.twilio_API);
@@ -22,13 +23,12 @@ app.get('/saved', function(req, res) {
 app.post('/directions', function (req, res) {
   let mapsUrl = (`https://www.google.com/maps/dir/?api=1&origin=${req.body.startAddress.split(' ').join('+')}&destination=${req.body.endAddress.split(' ').join('+')}&travelmode=driving`);
   let phoneNumber = req.body.phoneNumber;
-  request({
+  axios({
     method: 'POST',
-    uri: `https://www.googleapis.com/urlshortener/v1/url?key=${config.google_API}`,
-    body: {
+    url: `https://www.googleapis.com/urlshortener/v1/url?key=${config.google_API}`,
+    data: {
       longUrl: mapsUrl
     },
-    json: true,
   })
     .then(result => {
       client.messages.create({
