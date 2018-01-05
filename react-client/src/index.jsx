@@ -6,6 +6,9 @@ import Maps from './components/map.jsx';
 import Route from './components/routes.jsx';
 import Directions from './components/directions.jsx';
 import path from 'path';
+import axios from 'axios';
+
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,18 +33,16 @@ class App extends React.Component {
 
   componentDidMount() {
     let self = this;
-    $.ajax({
-      url: '/saved',
-      type: 'GET',
-      success: (result) => {
+
+    axios.get('/saved')
+      .then((result) => {
         self.setState({
-          savedRoutes: result
+          savedRoutes: result.data
         })
-      },
-      error: (err) => {
-        console.log(err, 'errored load saved routes')
-      }
-    })
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   toggleDirections() {
@@ -50,23 +51,25 @@ class App extends React.Component {
 
   newDirections(result) {
     let self = this;
-    $.ajax({
+
+    axios({
+      method: 'post',
       url: '/map',
-      type: 'POST',
-      contentType: 'application/json',
       data: JSON.stringify({ origin: result.request.origin.query, dest: result.request.destination.query }),
-      success: (result) => {
-        if (result !== "Accepted") {
-          self.setState({
-            savedRoutes: result
-          })
-          console.log(result, 'successful save to DB')
-        }
-      },
-      error: (err) => {
-        console.log(err, 'errored save to DB')
-      }
     })
+      .then((response) => {
+        console.log(response);
+        if (response.data !== "Accepted") {
+          self.setState({
+            savedRoutes: response.data
+          })
+        console.log(response.data, 'successful save to DB')
+        }
+      })
+      .catch((err) => {
+        console.log(err, 'errored on save to DB')
+      })
+      
     let legs = result.routes[0].legs[0];
     this.setState({
       routeSteps: legs.steps,
@@ -80,14 +83,16 @@ class App extends React.Component {
   newMap(origin, dest) {
     this.setState({
       origin: origin,
-      dest: dest
+      dest: dest,
+      showAll: false
     })
   }
 
   selectedRoute(origin, dest) {
     this.setState({
       origin: origin,
-      dest: dest
+      dest: dest,
+      showAll: false
     })
   }
 
@@ -135,7 +140,7 @@ class App extends React.Component {
             return <Directions key={step.encoded_lat_lngs} step={step} />
             
             }) }
-          {this.state.showAll ? <div className="show-all" onClick={this.toggleDirections}> Show Less</div> : 
+          {this.state.showAll ? '' : 
             <div className="show-all" onClick={this.toggleDirections}> Show All </div>}
         </div>
       </div>

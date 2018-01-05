@@ -49,7 +49,7 @@ app.post('/directions', function (req, res) {
 app.post('/map', function (req, res) {
   db.insert(req.body)
     .then(() => {
-      console.log('DB INSERTED YO!');
+      console.log('DB INSERTED');
       res.redirect('/saved');
     })
     .catch((err) => {

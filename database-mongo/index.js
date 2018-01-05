@@ -28,11 +28,11 @@ routeSchema.plugin(uniqueValidator);
 let Route = mongoose.model('Route', routeSchema);
 
 let selectAll = () => {
-  console.log('SELECT ALL HAS RUN')
   return Route.find({}, null, {limit:18, sort: {createdAt: -1}})
 };
 
 let insert = (route) => {
+  console.log(route)
   let id = route.origin + route.dest;
   return Route.create({ id: id.toLowerCase(), createdAt: new Date(), origin: route.origin, dest: route.dest });
 }
