@@ -8,8 +8,8 @@ class Directions extends React.Component {
 
   render() {
     return (
-      <div className="route-step">
-        <div>{this.props.step.instructions.replace(/[(<b>)(</b>)]/g, '')}</div>
+      <div className="direction-step">
+        <div>{this.props.step.instructions.replace(/<..>|<.>|<d.*$/g, '')}</div>
         <div><em>{this.props.step.distance.text} {this.props.step.duration.text}</em></div>
       </div>
     )

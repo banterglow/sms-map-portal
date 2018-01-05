@@ -6,7 +6,7 @@ class Forms extends React.Component {
     this.state = {
       origin: '',
       dest: '',
-      phone: 9253957743
+      phone: ''
     }
     this.submitMap = this.submitMap.bind(this);
     this.submitPhone = this.submitPhone.bind(this);
@@ -50,16 +50,16 @@ class Forms extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="col-md-8">
+        <div className="col-md-9">
           <form ref="form" onSubmit={this.submitMap}>
-            Origin: <input type="text" value={this.state.origin} onChange={this.changeOrigin} required/>
-            Destination: <input type="text" value={this.state.dest} onChange={this.changeDest} required/>
+            <input type="text" placeholder="origin" value={this.state.origin} onChange={this.changeOrigin} required/>
+            <input type="text" placeholder="destination" value={this.state.dest} onChange={this.changeDest} required/>
             <button type="submit"> Submit </button>
           </form>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-3">
           <form ref="form" onSubmit={this.submitPhone}>
-            Send to phone: <input type="type" value={this.state.phone}onChange={this.changePhone} required/>
+            <input type="type" placeholder="Send to phone" value={this.state.phone} onChange={this.changePhone} required/>
             <button type="submit"> Submit </button>
           </form>
         </div>
@@ -69,5 +69,3 @@ class Forms extends React.Component {
 }
 
 export default Forms;
-
-// onSubmit = { this.handleSubmit }

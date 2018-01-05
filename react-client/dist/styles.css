@@ -1,35 +1,79 @@
 .navbar {
-  border:solid;
-  border-color: black;
+  font-family: 'Open Sans';
   height: 30%;
+  color: white;
+  background-color: #96858F;
 }
 
 .main {
   height: 70%;
+  font-family: 'Open Sans';
 }
 
 .routes, .directions {
-  border:solid;
+  color:black;
+}
+
+.direction-step {
+  border: solid;
   border-color: black;
+  padding: 10px 5px 10px 5px;
+  border-width: 1px 0 0 0;
 }
 
 .route-step {
   border: solid;
   border-color: black;
+  padding: 10px 5px 10px 5px;
   border-width: 1px;
-  padding: 10px 0 10px 5px;
 }
 
-.maps {
-  height: 200px;
+.route-header, .direction-header {
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.route-header {
+  text-align: center;
 }
 
 #root, #app, #map {
-  height: 720px;
+  height: 770px;
 }
-
 
 #map {
   margin-top: 20px;
   margin-left: 0px;
 }
+
+.route-name, .show-all{
+  cursor: pointer;
+}
+
+.route-name {
+  text-align: center;
+}
+
+button {
+  border-radius: 8px;
+}
+
+input {
+  margin: 0px 10px 0px 10px;
+}
+
+.show-all {
+  margin: 10px 0px 0px 0px;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+
+colors{
+  color: #96858F;
+  color: #6D7993;
+  color: #9099A2;
+  color: #D5D5D5;
+}
+

@@ -15,8 +15,11 @@ class Maps extends React.Component {
     this.buildMap();
   }
 
-  componentDidUpdate() {
-    this.buildMap();
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.origin !== this.props.origin || prevProps.dest !== this.props.dest) {
+      console.log('map built')
+      this.buildMap();
+    }
   }
 
 
@@ -34,7 +37,9 @@ class Maps extends React.Component {
     this.directionsService.route(request, function (response, status) {
       if (status == 'OK') {
         directionsDisplay.setDirections(response);
-        self.props.callback(response.routes[0].legs[0]);
+        self.props.callback(response);
+      } else if (status === 'NOT_FOUND') {
+        alert('Origin or destination not found, please try again. Yo. ')
       }
     });
   }

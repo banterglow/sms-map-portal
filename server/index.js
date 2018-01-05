@@ -13,7 +13,6 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 app.get('/saved', function(req, res) {
-  console.log('hit /saved endpoint')
   db.selectAll()
     .then((result) => {
       res.json(result);
@@ -54,7 +53,8 @@ app.post('/map', function (req, res) {
       res.redirect('/saved');
     })
     .catch((err) => {
-      console.log('DB Insert Failed', err.message)
+      console.log('DB Insert Failed', err.message);
+      res.sendStatus(202);
     })
 });
 
