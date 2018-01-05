@@ -1,0 +1,35 @@
+.navbar {
+  border:solid;
+  border-color: black;
+  height: 30%;
+}
+
+.main {
+  height: 70%;
+}
+
+.routes, .directions {
+  border:solid;
+  border-color: black;
+}
+
+.route-step {
+  border: solid;
+  border-color: black;
+  border-width: 1px;
+  padding: 10px 0 10px 5px;
+}
+
+.maps {
+  height: 200px;
+}
+
+#root, #app, #map {
+  height: 720px;
+}
+
+
+#map {
+  margin-top: 20px;
+  margin-left: 0px;
+}

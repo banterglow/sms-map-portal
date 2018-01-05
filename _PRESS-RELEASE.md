@@ -18,27 +18,28 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
-
+  SMS Portal
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
-
+  Continuity between your laptop and your phone without installing additional apps. 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-
+  SMS Portal acts as a direct line between your laptop and smartphone, all using existing SMS technologies. With SMS Portal, you'll be able to make any link available on your smartphone through your browser window. Plus, SMS Portal even has a convenience feature built in to support Google Maps searches. Just tap the link, and you're on your way!  
 ## Problem ##
   > Describe the problem your product solves.
-
+  Continuity between laptop and smartphone is often disjointed, especially when using two different platforms. You may have Yelped a lunch spot on your computers, then been forced to repeat the same search later on your smartphones at lunchtime. And that's assuming you even remember the place you had settled on! Or you may have begun reading an article on their laptop, only to have to send a self-addressed email to finish during your commute. 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
-
+  Just enter your phone number and a link, and your phone will be ready to go!
 ## Quote from You ##
   > A quote from a spokesperson in your company.
-
+  "We're revolutionizing how people send emails to themselves."
 ## How to Get Started ##
   > Describe how easy it is to get started.
-
+  "Just type in your phone number, add a link, and hit submit. It's that simple."
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
-
+  "Wow, this saved me 3 seconds and a few extra clicks!"
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+  "Check out our beta at localhost:3000...oh wait...stay tuned for when we go live. 

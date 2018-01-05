@@ -1,7 +1,9 @@
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+let mongoose = require('mongoose');
+let uniqueValidator = require('mongoose-unique-validator');
 
-var db = mongoose.connection;
+mongoose.connect('mongodb://localhost/maps');
+
+let db = mongoose.connection;
 
 db.on('error', function() {
   console.log('mongoose connection error');
@@ -11,21 +13,31 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+let routeSchema = mongoose.Schema({
+  id: {
+    type: String,
+    unique: true,
+  },
+  createdAt: Date,
+  origin: String,
+  dest: String
 });
 
-var Item = mongoose.model('Item', itemSchema);
+routeSchema.plugin(uniqueValidator);
 
-var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
-    if(err) {
-      callback(err, null);
-    } else {
-      callback(null, items);
-    }
-  });
+let Route = mongoose.model('Route', routeSchema);
+
+let selectAll = () => {
+  console.log('SELECT ALL HAS RUN')
+  return Route.find({}, null, {limit:18, sort: {createdAt: -1}})
 };
 
+let insert = (route) => {
+  let id = route.origin + route.dest;
+  return Route.create({ id: id.toLowerCase(), createdAt: new Date(), origin: route.origin, dest: route.dest });
+}
+
+
+
 module.exports.selectAll = selectAll;
+module.exports.insert = insert;
