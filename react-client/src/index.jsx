@@ -128,7 +128,7 @@ class App extends React.Component {
         <div className="col-md-7 map"><Maps origin={this.state.origin} dest={this.state.dest} callback={this.newDirections} /></div>
         <div className="col-md-3 directions">
           <div className="direction-header">
-            <strong>{this.state.startAddress}</strong> to <strong>{this.state.endAddress}</strong> 
+            <strong>{this.state.startAddress}</strong> <br/> to <br/> <strong>{this.state.endAddress}</strong> 
             <br/>
             Distance: {this.state.distance + '   '} 
             Duration: {this.state.duration}
